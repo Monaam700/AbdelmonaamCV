@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdelmonaam Maged Essa — Senior E-commerce Frontend Developer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #0f2540;
+      --teal: #0b7285;
+      --teal-lt: #e8f6f8;
+      --accent: #1098ad;
+      --slate: #374151;
+      --muted: #6b7280;
+      --rule: #e5e7eb;
+      --bg: #ffffff;
+      --sidebar: #f4f7fb;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #eef2f7;
+      color: var(--slate);
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 900px;
+      margin: 32px auto;
+      background: var(--bg);
+      box-shadow: 0 4px 32px rgba(15, 37, 64, .12);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      grid-template-rows: auto 1fr;
+    }
+
+    /* ─────────────────── HEADER ─────────────────── */
+    .cv-header {
+      grid-column: 1 / -1;
+      background: var(--navy);
+      color: #fff;
+      padding: 36px 40px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .header-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: 1px;
+      border: 3px solid rgba(255, 255, 255, .25);
+    }
+
+    .header-avatar {
+      background: url(./me.png) center / cover no-repeat;
+      color: transparent;
+      background-size: 118px;
+      background-position: -42px -12px;
+      transform: rotate(-15deg);
+    }
+
+    .header-text h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .header-text .title-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      background: rgba(125, 211, 252, .12);
+      border: 1px solid rgba(125, 211, 252, .3);
+      border-radius: 3px;
+      padding: 3px 10px;
+    }
+
+    .header-contacts {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .contact-item {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, .82);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      justify-content: flex-end;
+    }
+
+    .contact-item a {
+      color: #7dd3fc;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .ci-icon {
+      width: 15px;
+      height: 15px;
+      opacity: .7;
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────── SIDEBAR ─────────────────── */
+    .sidebar {
+      background: var(--sidebar);
+      padding: 30px 24px 40px;
+      border-right: 1px solid var(--rule);
+    }
+
+    /* ─────────────────── MAIN ─────────────────── */
+    .main {
+      padding: 30px 36px 40px;
+    }
+
+    /* ─────────────────── SECTION ─────────────────── */
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: var(--rule);
+      display: block;
+    }
+
+    /* ─────────────────── SIDEBAR SKILLS ─────────────────── */
+    .skill-group {
+      margin-bottom: 18px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-group-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .chip {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 3px;
+      background: #fff;
+      border: 1px solid #d1dae6;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .chip.teal {
+      background: var(--teal-lt);
+      border-color: #a8d8e0;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* ─────────────────── SIDEBAR: certifications/partners ─────────────────── */
+    .partner-list {
+      list-style: none;
+    }
+
+    .partner-list li {
+      font-size: 12px;
+      color: var(--slate);
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .partner-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────── SIDEBAR: LANGUAGES ─────────────────── */
+    .lang-item {
+      margin-bottom: 10px;
+    }
+
+    .lang-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .lang-level {
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .lang-bar {
+      height: 4px;
+      border-radius: 4px;
+      background: #dbe4ed;
+      overflow: hidden;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--accent);
+    }
+
+    /* ─────────────────── SIDEBAR: stats ─────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .stat-box {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .stat-num span {
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    /* ─────────────────── EDUCATION (sidebar) ─────────────────── */
+    .edu-item {}
+
+    .edu-degree {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    .edu-detail {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ─────────────────── SUMMARY ─────────────────── */
+    .summary-text {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.75;
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+      background: var(--teal-lt);
+      padding: 12px 14px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    /* ─────────────────── EXPERIENCE ─────────────────── */
+    .job {
+      margin-bottom: 22px;
+      break-inside: avoid;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 5px;
+    }
+
+    .job-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    .job-company {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .job-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .job-date {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--navy);
+      background: #e8f0fa;
+      border-radius: 3px;
+      padding: 2px 8px;
+      white-space: nowrap;
+    }
+
+    .job-type {
+      font-size: 10.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      text-align: right;
+    }
+
+    .job ul {
+      list-style: none;
+      margin-top: 6px;
+      padding: 0;
+    }
+
+    .job ul li {
+      font-size: 12.5px;
+      color: var(--slate);
+      padding: 3px 0 3px 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .job ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .achievement {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ─────────────────── PROJECTS ─────────────────── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .project-platform {
+      background: var(--sidebar);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 12px 14px;
+      break-inside: avoid;
+    }
+
+    .platform-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .platform-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .project-links a {
+      font-size: 11px;
+      color: var(--navy);
+      text-decoration: none;
+      border: 1px solid #ccd5e0;
+      border-radius: 3px;
+      padding: 2px 7px;
+      background: #fff;
+      transition: border-color .15s;
+    }
+
+    .project-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ─────────────────── DIVIDER ─────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--rule);
+      margin: 20px 0;
+    }
+
+    /* ─────────────────── PRINT ─────────────────── */
+    @page {
+      size: A4;
+      margin: 12mm 10mm;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <article class="page" data-cid="zVJ169">
+
+    <!-- ══════════════ HEADER ══════════════ -->
+    <header class="cv-header" data-cid="RWxxna">
+      <div class="header-avatar" data-cid="9xJVjH">AM</div>
+      <div class="header-text" data-cid="Lmz-NA">
+        <h1 data-cid="l75fht">Abdelmonaam Maged Essa</h1>
+        <span class="title-tag" data-cid="q_l4et">Senior E-commerce Frontend Developer</span>
+      </div>
+      <div class="header-contacts" data-cid="rqXpqk">
+        <div class="contact-item" data-cid="GG8hLp">
+          <svg class="ci-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-cid="MxU3Pd">
+            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"
+              data-cid="foHaSE"></path>
+            <circle cx="12" cy="11" r="3" data-cid="olQwj5"></circle>
+          </svg>
+          Mansoura, Egypt
+        </div>
+        <div class="contact-item" data-cid="HIdLVB">
+          <svg class="ci-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-cid="RDXdf8">
+            <path
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              data-cid="CoThNX"></path>
+          </svg>
+          <a href="mailto:abdelmonaam720@gmail.com" data-cid="-15qwt">abdelmonaam720@gmail.com</a>
+        </div>
+        <div class="contact-item" data-cid="7mifRk">
+          <svg class="ci-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" data-cid="mDAx_y">
+            <path
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              data-cid="vpZWd4"></path>
+          </svg>
+          +20 155 354 7714
+        </div>
+        <div class="contact-item" data-cid="FuIKdB">
+          <svg class="ci-icon" fill="currentColor" viewBox="0 0 24 24" data-cid="o0dQqo">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+              data-cid="hm8NBB"></path>
+          </svg>
+          <a href="https://github.com/abdelmonem700" target="_blank" data-cid="zDL2L9">github.com/abdelmonem700</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════ SIDEBAR ══════════════ -->
+    <aside class="sidebar" data-cid="WP7pK8">
+
+      <!-- Key Stats -->
+      <div class="section" data-cid="4Bxz31">
+        <h2 class="section-title" data-cid="G4A14m">Highlights</h2>
+        <div class="stat-grid" data-cid="qHTLJJ">
+          <div class="stat-box" data-cid="FhVflu">
+            <div class="stat-num" data-cid="-HCay5">5<span data-cid="mQliPe">+</span></div>
+            <div class="stat-label" data-cid="rJPdD2">Years of Experience</div>
+          </div>
+          <div class="stat-box" data-cid="HrrXI9">
+            <div class="stat-num" data-cid="u0qhoD">1K<span data-cid="VBzkWA">+</span></div>
+            <div class="stat-label" data-cid="C4kzvE">Storefront Projects</div>
+          </div>
+          <div class="stat-box" data-cid="AYMnPN">
+            <div class="stat-num" data-cid="4p-CGt">90<span data-cid="0Vjjq4">+</span></div>
+            <div class="stat-label" data-cid="cDtENo">Desktop Lighthouse</div>
+          </div>
+          <div class="stat-box" data-cid="ezGFTX">
+            <div class="stat-num" data-cid="e4FAKi">4</div>
+            <div class="stat-label" data-cid="33cgtc">E-commerce Platforms</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Skills -->
+      <div class="section" data-cid="q2EuNX">
+        <h2 class="section-title" data-cid="HxunBr">Technical Skills</h2>
+
+        <div class="skill-group" data-cid="-er0Nd">
+          <div class="skill-group-label" data-cid="GF0fcc">Core Frontend</div>
+          <div class="skill-chips" data-cid="EVMMaf">
+            <span class="chip teal" data-cid="2-tjn5">HTML5</span>
+            <span class="chip teal" data-cid="tqP3T4">CSS3</span>
+            <span class="chip teal" data-cid="qzVlVM">JavaScript ES6+</span>
+            <span class="chip teal" data-cid="Supt4B">TypeScript</span>
+            <span class="chip" data-cid="_ESPa7">React.js</span>
+            <span class="chip" data-cid="BqQmrV">jQuery</span>
+          </div>
+        </div>
+
+        <div class="skill-group" data-cid="IiykBT">
+          <div class="skill-group-label" data-cid="Y6t0I-">Styling &amp; UI</div>
+          <div class="skill-chips" data-cid="D05vLA">
+            <span class="chip teal" data-cid="pTRPCE">Tailwind CSS</span>
+            <span class="chip" data-cid="XbJuu5">Sass / SCSS</span>
+            <span class="chip" data-cid="F3KDA-">Bootstrap</span>
+            <span class="chip" data-cid="Z76gml">RTL Optimization</span>
+          </div>
+        </div>
+
+        <div class="skill-group" data-cid="Tqj9Sp">
+          <div class="skill-group-label" data-cid="HNHOXE">Storefront / Templating</div>
+          <div class="skill-chips" data-cid="nT2IVF">
+            <span class="chip teal" data-cid="qPEMoh">Liquid (Shopify)</span>
+            <span class="chip teal" data-cid="V0IJKk">Twig (Zid / Salla)</span>
+            <span class="chip" data-cid="R5XTlP">Sections Architecture</span>
+            <span class="chip" data-cid="wfyReV">Blocks System</span>
+            <span class="chip" data-cid="QoQLuY">Reusable UI Components</span>
+          </div>
+        </div>
+
+        <div class="skill-group" data-cid="rNwUCf">
+          <div class="skill-group-label" data-cid="fOFzAs">Performance &amp; SEO</div>
+          <div class="skill-chips" data-cid="VOANp3">
+            <span class="chip teal" data-cid="p46a_b">Core Web Vitals</span>
+            <span class="chip" data-cid="BIX_Sj">Lighthouse Audit</span>
+            <span class="chip" data-cid="jgVSpP">PageSpeed</span>
+            <span class="chip" data-cid="YRin8M">Mobile Optimization</span>
+            <span class="chip" data-cid="T4Am3g">SEO Best Practices</span>
+          </div>
+        </div>
+
+        <div class="skill-group" data-cid="CabPlU">
+          <div class="skill-group-label" data-cid="t-CP3M">Tools &amp; Workflow</div>
+          <div class="skill-chips" data-cid="J0LoFa">
+            <span class="chip" data-cid="EcWIYe">Git / GitHub</span>
+            <span class="chip" data-cid="OH_2Rh">Pull Requests</span>
+            <span class="chip" data-cid="CK4mm0">REST APIs</span>
+            <span class="chip" data-cid="0KWsKn">DOM / BOM</span>
+            <span class="chip" data-cid="C3x_1M">Cross-Browser</span>
+          </div>
+        </div>
+
+        <div class="skill-group" data-cid="CQ1aTF">
+          <div class="skill-group-label" data-cid="d5iVIL">Hosting &amp; Infra</div>
+          <div class="skill-chips" data-cid="jzb0WW">
+            <span class="chip" data-cid="NVjUff">Contabo</span>
+            <span class="chip" data-cid="TuOifh">Hostinger</span>
+            <span class="chip" data-cid="yuu3v0">GoDaddy</span>
+            <span class="chip" data-cid="4sWORE">Namecheap</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Partnerships -->
+      <div class="section" data-cid="GpToeg">
+        <h2 class="section-title" data-cid="jeHSMo">Platform Partnerships</h2>
+        <ul class="partner-list" data-cid="zt5tIh">
+          <li data-cid="fHMAEv">Salla Partner — Certified Developer</li>
+          <li data-cid="xJSsTk">Zid Partner — Certified Developer</li>
+          <li data-cid="HUb95l">Shopify Partner</li>
+        </ul>
+      </div>
+
+      <!-- Education -->
+      <div class="section" data-cid="iCXHmP">
+        <h2 class="section-title" data-cid="7tYz20">Education</h2>
+        <div class="edu-item" data-cid="1OPbE2">
+          <div class="edu-degree" data-cid="pjVebO">B.Sc. Physics</div>
+          <div class="edu-detail" data-cid="7lUCwE">Mansoura University</div>
+          <div class="edu-detail" style="color:#0b7285;font-weight:600;" data-cid="dGxpAa">2019</div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="section" data-cid="BNGKMZ">
+        <h2 class="section-title" data-cid="8tHNT_">Languages</h2>
+        <div class="lang-item" data-cid="XpLvzt">
+          <div class="lang-name" data-cid="9jIYVD">Arabic <span class="lang-level" data-cid="TG3nAT">Native</span></div>
+          <div class="lang-bar" data-cid="78KMT6">
+            <div class="lang-bar-fill editor-empty-block" style="width:100%" data-cid="GGYDGF"></div>
+          </div>
+        </div>
+        <div class="lang-item" style="margin-top:8px;" data-cid="lB83FQ">
+          <div class="lang-name" data-cid="omX-QO">English <span class="lang-level" data-cid="Qga4Ib">B2 / C1 —
+              Professional</span></div>
+          <div class="lang-bar" data-cid="Af2nrz">
+            <div class="lang-bar-fill editor-empty-block" style="width:82%" data-cid="sp3xc0"></div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════ MAIN CONTENT ══════════════ -->
+    <main class="main" data-cid="QglCiB">
+
+      <!-- Professional Summary -->
+      <section class="section" data-cid="ndFuk0">
+        <h2 class="section-title" data-cid="3AqCPQ">Professional Summary</h2>
+        <p class="summary-text" data-cid="dCmosS">
+          Senior E-commerce Frontend Developer with <strong data-cid="_9XzT9">5+ years</strong> of end-to-end storefront
+          engineering experience across <strong data-cid="Jpfgtw">Salla, Zid, Shopify, and WordPress</strong>
+          ecosystems, serving GCC markets at scale. Contributed to <strong data-cid="vlFJj2">1,000+ storefront
+            implementations</strong>, delivering measurable performance gains — including boosting desktop Lighthouse
+          scores from ~45 to <strong data-cid="TPeWDi">90+</strong> and mobile scores from 12 to <strong
+            data-cid="batC44">60+</strong>. Expert in responsive RTL architecture, scalable UI component systems,
+          JavaScript-driven interactivity, and Core Web Vitals optimization. Certified partner on Salla, Zid, and
+          Shopify. Equally comfortable delivering solo as a freelancer or collaborating within Git-based multi-developer
+          teams on high-traffic production environments.
+        </p>
+      </section>
+
+      <!-- Professional Experience -->
+      <section class="section" data-cid="wbiZ7u">
+        <h2 class="section-title" data-cid="C1qAKx">Professional Experience</h2>
+
+        <!-- Insight -->
+        <div class="job" data-cid="HETlYt">
+          <div class="job-header" data-cid="TG40dl">
+            <div data-cid="AQo9Kv">
+              <div class="job-title" data-cid="ESzeOD">Theme Developer</div>
+              <div class="job-company" data-cid="XBDyzz">Insight</div>
+            </div>
+            <div class="job-meta" data-cid="S5DHwT">
+              <div class="job-date" data-cid="UbR97N">2024 – 2025</div>
+              <div class="job-type" data-cid="NZ_rYA">Remote</div>
+            </div>
+          </div>
+          <ul data-cid="otYSLv">
+            <li data-cid="Ahdj9o">Engineered and maintained scalable e-commerce themes across <span class="achievement"
+                data-cid="BaTfK3">Salla, Zid, Shopify, and WordPress</span> targeting Arabic-speaking GCC markets.</li>
+            <li data-cid="btbFnh">Built a reusable, component-based RTL storefront system, reducing new-store setup time
+              and ensuring cross-store UI consistency.</li>
+            <li data-cid="OR7igL">Led performance optimization initiatives that <span class="achievement"
+                data-cid="3ypG5v">significantly improved Lighthouse and PageSpeed scores</span> across multiple
+              production storefronts.</li>
+            <li data-cid="7hbMuc">Delivered seasonal high-traffic campaign builds for <span class="achievement"
+                data-cid="3ksH_5">Ramadan, Black Friday, and Saudi National Day</span>, meeting tight deadlines under
+              peak-load conditions.</li>
+            <li data-cid="DvhudG">Improved storefront maintainability and overall UX through systematic frontend
+              refactoring and consistent design-token adoption.</li>
+          </ul>
+        </div>
+
+        <!-- TAR -->
+        <div class="job" data-cid="X319-d">
+          <div class="job-header" data-cid="d8SRH5">
+            <div data-cid="IgNgyw">
+              <div class="job-title" data-cid="VeUd7h">Front-End Developer</div>
+              <div class="job-company" data-cid="JcqN0O">TAR</div>
+            </div>
+            <div class="job-meta" data-cid="PzsSbf">
+              <div class="job-date" data-cid="Y9oMGe">2023 – 2024</div>
+              <div class="job-type" data-cid="f1wbio">Full Time</div>
+            </div>
+          </div>
+          <ul data-cid="-LG4R0">
+            <li data-cid="5z9BoC">Implemented responsive, reusable UI components for large-scale e-commerce storefronts
+              targeting GCC clients.</li>
+            <li data-cid="Y-obZQ">Developed JavaScript-driven dynamic storefront features including cart logic, product
+              filtering, and custom storefront animations.</li>
+            <li data-cid="s_ptxz">Collaborated in <span class="achievement" data-cid="aEPYO_">Git-based multi-developer
+                workflows</span> (branches, PRs, code review) to maintain codebase quality.</li>
+            <li data-cid="E3RfRI">Resolved complex frontend issues around REST APIs, RTL rendering, responsive layouts,
+              and cross-browser compatibility.</li>
+            <li data-cid="ZLgkZu">Delivered measurable improvements in mobile responsiveness and frontend performance
+              for production environments.</li>
+          </ul>
+        </div>
+
+        <!-- Freelance -->
+        <div class="job" data-cid="qZnC9o">
+          <div class="job-header" data-cid="T5n9nu">
+            <div data-cid="8UN6aa">
+              <div class="job-title" data-cid="SfMQoG">Freelance Frontend Developer</div>
+              <div class="job-company" data-cid="Rqesm0">Self-Employed</div>
+            </div>
+            <div class="job-meta" data-cid="jCbShB">
+              <div class="job-date" data-cid="KppaVY">2021 – 2023</div>
+              <div class="job-type" data-cid="BveQwH">Remote</div>
+            </div>
+          </div>
+          <ul data-cid="ZiWr88">
+            <li data-cid="Q0ma1j">Independently delivered <span class="achievement" data-cid="6yp8pe">full storefront
+                lifecycle projects</span> — from discovery and customization through deployment — for GCC clients on
+              Salla, Zid, Shopify, and WordPress.</li>
+            <li data-cid="xHqlFt">Built responsive RTL storefronts, reusable section libraries, and JavaScript-driven
+              storefront functionality.</li>
+            <li data-cid="5C0dYJ">Executed performance audits and optimization projects, producing <span
+                class="achievement" data-cid="7rINNs">significant Core Web Vitals and PageSpeed improvements</span>.
+            </li>
+            <li data-cid="t4zyo9">Managed long-term client relationships, multiple hosting environments, domain
+              configuration, and production deployments.</li>
+          </ul>
+        </div>
+
+        <!-- Elbatt & ZBOOMA -->
+        <div class="job" data-cid="VPzUaK">
+          <div class="job-header" data-cid="XORYgZ">
+            <div data-cid="fZUbPD">
+              <div class="job-title" data-cid="MaauiG">Front-End Developer</div>
+              <div class="job-company" data-cid="arJrVZ">Elbatt &amp; ZBOOMA</div>
+            </div>
+            <div class="job-meta" data-cid="1M0InE">
+              <div class="job-date" data-cid="hOJNIl">2020 – 2021</div>
+              <div class="job-type" data-cid="sPINye">Full Time</div>
+            </div>
+          </div>
+          <ul data-cid="jNIGif">
+            <li data-cid="o5whLa">Developed responsive e-commerce storefronts and dynamic frontend interfaces across
+              multiple online store platforms for Saudi and GCC markets.</li>
+            <li data-cid="CWyL99">Integrated REST APIs and implemented custom JavaScript functionality for interactive
+              storefront experiences.</li>
+            <li data-cid="XOv-78">Contributed to <span class="achievement" data-cid="bmUSWe">Lighthouse optimization,
+                mobile responsiveness, and Core Web Vitals</span> improvements across client projects.</li>
+          </ul>
+        </div>
+
+        <!-- El Gamal Tourism -->
+        <div class="job" data-cid="hYpqwS">
+          <div class="job-header" data-cid="MaKFsX">
+            <div data-cid="We0aeR">
+              <div class="job-title" data-cid="RofT-b">Travel Operations &amp; Ticketing Specialist</div>
+              <div class="job-company" data-cid="ya8OHi">El Gamal Tourism</div>
+            </div>
+            <div class="job-meta" data-cid="sdb1hL">
+              <div class="job-date" data-cid="3lFgVI">2017 – 2020</div>
+              <div class="job-type" data-cid="7UCC5q">Full Time</div>
+            </div>
+          </div>
+          <ul data-cid="5E-R8A">
+            <li data-cid="7lZ885">Managed domestic and international travel operations, reservations, and customer
+              booking workflows.</li>
+            <li data-cid="-yun9T">Handled flight reservations and ticket issuance using <span class="achievement"
+                data-cid="p7H4s_">Amadeus and Galileo GDS systems</span>.</li>
+            <li data-cid="ozJPSd">Coordinated with airline systems and regional travel partners including EgyptAir and
+              Air Arabia.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Selected Projects -->
+      <section class="section" data-cid="tqfRtn">
+        <h2 class="section-title" data-cid="yfndhM">Selected Client Projects</h2>
+        <div class="project-grid" data-cid="03GVRT">
+
+          <div class="project-platform" data-cid="zTgSqw">
+            <div class="platform-name" data-cid="IAyd4S"><span class="platform-dot" data-cid="353nV6"></span>Salla
+              Storefronts</div>
+            <div class="project-links" data-cid="UhxvOu">
+              <a href="https://al3jeb.com" target="_blank" data-cid="IS-2En">al3jeb.com</a>
+              <a href="https://dabaeeh.com" target="_blank" data-cid="OQttqI">dabaeeh.com</a>
+              <a href="https://estore.efa.org.sa" target="_blank" data-cid="X4w2QK">estore.efa.org.sa</a>
+              <a href="https://alriyfstore.com" target="_blank" data-cid="GYTC5K">alriyfstore.com</a>
+              <a href="https://sbaik.sa" target="_blank" data-cid="qQGptd">sbaik.sa</a>
+            </div>
+          </div>
+
+          <div class="project-platform" data-cid="kwsaRU">
+            <div class="platform-name" data-cid="7elOcb"><span class="platform-dot" data-cid="FcElyI"></span>Zid
+              Storefronts</div>
+            <div class="project-links" data-cid="fbrAn8">
+              <a href="https://comfortwings.com.sa" target="_blank" data-cid="aE3GfA">comfortwings.com.sa</a>
+              <a href="https://fustoqah.com" target="_blank" data-cid="V6BHju">fustoqah.com</a>
+              <a href="https://salamgifts.net" target="_blank" data-cid="zOrKbr">salamgifts.net</a>
+              <a href="https://raseel.gift" target="_blank" data-cid="s2CIbi">raseel.gift</a>
+              <a href="https://rashof.com" target="_blank" data-cid="iQ-B9D">rashof.com</a>
+            </div>
+          </div>
+
+          <div class="project-platform" data-cid="zKPO7M">
+            <div class="platform-name" data-cid="zPHdue"><span class="platform-dot" data-cid="TdYoTp"></span>Shopify
+              Storefronts</div>
+            <div class="project-links" data-cid="JwLj8a">
+              <a href="https://boxaat.com" target="_blank" data-cid="5tntlG">boxaat.com</a>
+              <a href="https://fonezone.me" target="_blank" data-cid="wxl1jn">fonezone.me</a>
+              <a href="https://ksadrop.com" target="_blank" data-cid="JvHYX4">ksadrop.com</a>
+              <a href="https://wheelsbikes.com" target="_blank" data-cid="vduIIv">wheelsbikes.com</a>
+              <a href="https://eleganthome.com.sa" target="_blank" data-cid="-Bw2E7">eleganthome.com.sa</a>
+            </div>
+          </div>
+
+          <div class="project-platform" data-cid="foF8ZD">
+            <div class="platform-name" data-cid="SmJySY"><span class="platform-dot" data-cid="vXiPAC"></span>FatherShops
+            </div>
+            <div class="project-links" data-cid="GABMnX">
+              <a href="https://kaiser0.com" target="_blank" data-cid="UZZLoq">kaiser0.com</a>
+              <a href="https://yooniii.com" target="_blank" data-cid="3ihvTN">yooniii.com</a>
+              <a href="https://ratibhha.com" target="_blank" data-cid="BShiQj">ratibhha.com</a>
+              <a href="https://pureshapeoriginals.com" target="_blank" data-cid="y8YBTb">pureshapeoriginals.com</a>
+              <a href="https://myzayara.com" target="_blank" data-cid="Iwh7y0">myzayara.com</a>
+            </div>
+          </div>
+
+          <div class="project-platform" data-cid="7beERW">
+            <div class="platform-name" data-cid="SPA8RM"><span class="platform-dot" data-cid="HSR1mk"></span>Other
+              Platforms</div>
+            <div class="project-links" data-cid="ENidaV">
+              <a href="https://emtenan.co" target="_blank" data-cid="nQ-BqH">emtenan.co</a>
+              <a href="https://mapp.sa/masterpieceaiabrahym" target="_blank" data-cid="gswGiI">mapp.sa/masterpiece</a>
+              <a href="https://boagasa.com" target="_blank" data-cid="iqntD8">boagasa.com</a>
+            </div>
+          </div>
+
+          <div class="project-platform" data-cid="zBu5ZX">
+            <div class="platform-name" data-cid="FI5BTP"><span class="platform-dot" data-cid="wMRUXG"></span>Native
+              React / JS</div>
+            <div class="project-links" data-cid="XHDoGg">
+              <a href="https://github.com/abdelmonem700/Around-World" target="_blank" data-cid="xGbl4L">Around-World</a>
+              <a href="https://github.com/abdelmonem700/calorie-tracker" target="_blank"
+                data-cid="F71_9b">calorie-tracker</a>
+              <a href="https://boagasa.com" target="_blank" data-cid="a4FoLW">boagasa.com</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </article>
+
+</body>
+
+</html>
